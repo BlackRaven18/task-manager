@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanager.taskmanager.MainDashboardController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Panel główny">
+               <content>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="371.0" prefWidth="269.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="56.0" prefWidth="233.0" spacing="20.0">
+                                 <children>
+                                    <Label text="Dane pracownika: ">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="233.0" spacing="20.0">
+                                 <children>
+                                    <Label text="ID:">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="dashboardIdLabel" text="id">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="66.0" prefWidth="233.0" spacing="20.0">
+                                 <children>
+                                    <Label text="Imię: ">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="dashboardNameLabel" text="imie">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="68.0" prefWidth="233.0" spacing="20.0">
+                                 <children>
+                                    <Label text="Nazwisko:">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="dashboardSurnameLabel" text="nazwisko">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <MenuButton fx:id="chooseTaskMenuButton" mnemonicParsing="false" text="Zadania" />
+                                 </children>
+                              </HBox>
+                           </children></VBox>
+                        <TableView fx:id="employeeTaskTable" onMouseClicked="#selectEmployeeTasksTableRow" prefHeight="471.0" prefWidth="554.0">
+                          <columns>
+                              <TableColumn fx:id="employeeTaskEmployeeIdColumn" minWidth="0.0" prefWidth="100.79998624324799" text="ID pracownika" />
+                            <TableColumn fx:id="employeeTaskNameColumn" prefWidth="88.00000762939453" text="Imie" />
+                            <TableColumn fx:id="employeeTaskSurnameColumn" minWidth="0.0" prefWidth="101.60000610351562" text="Nazwisko" />
+                              <TableColumn fx:id="employeeTaskDescriptionColumn" prefWidth="275.99995117187495" text="Zadanie" />
+                          </columns>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </TableView>
+                     </children>
+                  </HBox>
+               </content></Tab>
+          <Tab text="Pracownicy">
+               <content>
+                  <HBox>
+                     <children>
+                        <VBox prefHeight="471.0" prefWidth="525.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                 <children>
+                                    <Label text="Dane pracownika: ">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="238.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="employeeNameTextField" alignment="CENTER" promptText="Imie" />
+                                          <TextField fx:id="employeeSurnameTextField" alignment="CENTER" promptText="Nazwisko" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#addNewEmployee" text="Dodaj" />
+                                    <Button mnemonicParsing="false" onAction="#deleteEmployee" text="Usun" />
+                                 </children>
+                              </HBox>
+                           </children></VBox>
+                        <TableView fx:id="employeeTable" onMouseClicked="#getSelectedEmployeeId" prefHeight="471.0" prefWidth="806.0">
+                          <columns>
+                            <TableColumn fx:id="employeeIdColumn" prefWidth="124.0" text="ID" />
+                              <TableColumn fx:id="employeeNameColumn" prefWidth="236.00003051757812" text="Imie" />
+                            <TableColumn fx:id="employeeSurnameColumn" prefWidth="75.0" text="Nazwisko" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </HBox>
+               </content></Tab>
+            <Tab text="Zadania">
+               <content>
+                  <HBox>
+                     <children>
+                        <VBox prefHeight="471.0" prefWidth="510.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="73.0" prefWidth="262.0">
+                                 <children>
+                                    <Label text="Zadania pracowników:">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="taskDescriptionTextField" alignment="CENTER" prefHeight="26.0" prefWidth="243.0" promptText="Opis" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#addNewTask" text="Dodaj" />
+                                    <Button mnemonicParsing="false" onAction="#deleteTask" text="Usuń" />
+                                 </children>
+                              </HBox>
+                           </children></VBox>
+                        <TableView fx:id="taskTable" onMouseClicked="#getSelectedTaskId" prefHeight="471.0" prefWidth="787.0">
+                          <columns>
+                            <TableColumn fx:id="taskIdColumn" prefWidth="131.99999392032623" text="ID" />
+                              <TableColumn fx:id="taskDescriptionColumn" prefWidth="405.60003662109375" text="Opis zadania" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </HBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#logOut" text="Wyloguj się" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="602.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="278.0" text="Panel Główny" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></HBox>
+   </top>
+</BorderPane>
